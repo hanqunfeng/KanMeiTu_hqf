@@ -42,12 +42,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> 
         holder.bindData(datas.get(position));
 
         if (onItemClickListener != null) {
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    onItemClickListener.onItemClick(position);
-                }
-            });
+            holder.itemView.setOnClickListener(v -> onItemClickListener.onItemClick(position));
         }
     }
 

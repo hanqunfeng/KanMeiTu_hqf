@@ -8,11 +8,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.kanmeitu_hqf.activity.ImageDetailActivity;
 import com.example.kanmeitu_hqf.activity.LoginActivity;
 import com.example.kanmeitu_hqf.adapter.ImageAdapter;
 import com.example.kanmeitu_hqf.api.Api;
 import com.example.kanmeitu_hqf.domain.Image;
 import com.example.kanmeitu_hqf.domain.response.ListResponse;
+import com.example.kanmeitu_hqf.util.Constants;
 import com.example.kanmeitu_hqf.util.SharedPreferencesUtil;
 
 import java.util.ArrayList;
@@ -66,6 +68,22 @@ public class MainActivity extends AppCompatActivity {
             datas.add(new Image(String.format("http://dev-courses-quick.oss-cn-beijing.aliyuncs.com/%d.jpg", i)));
         }
         adapter.setData(datas);
+
+//        设置点击事件
+        adapter.setOnItemClickListener(position -> {
+//            Toast.makeText(MainActivity.this, "click:"+position, Toast.LENGTH_SHORT).show();
+//            ToastUtil.shortToast(MainActivity.this,"click:"+position);
+            //当点击一个图片后调用这里
+            Image image = adapter.getData(position);
+
+            //跳转到图片详情页面
+            Intent intent = new Intent(MainActivity.this, ImageDetailActivity.class);
+
+            //通过intent将图片地址传递到详情界面
+            intent.putExtra(Constants.ID, image.getUri());
+
+            startActivity(intent);
+        });
 
 //        fetchData();
     }
