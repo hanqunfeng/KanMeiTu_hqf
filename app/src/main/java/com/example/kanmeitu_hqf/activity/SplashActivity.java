@@ -8,16 +8,14 @@ import android.os.Message;
 import android.view.WindowManager;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.kanmeitu_hqf.MainActivity;
 import com.example.kanmeitu_hqf.R;
-import com.example.kanmeitu_hqf.util.SharedPreferencesUtil;
 
 /**
  * @author hanqf
  */
-public class SplashActivity extends AppCompatActivity {
+public class SplashActivity extends BaseActivity {
 
     @SuppressLint("HandlerLeak")
     private Handler handler = new Handler() {
@@ -29,7 +27,7 @@ public class SplashActivity extends AppCompatActivity {
 
 
     };
-    private SharedPreferencesUtil sp;
+
 
     private void next() {
 
@@ -56,7 +54,6 @@ public class SplashActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        sp = SharedPreferencesUtil.getInstance(getApplicationContext());
 
         handler.postDelayed(() -> {
             //3秒钟后调用，这里

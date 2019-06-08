@@ -8,22 +8,19 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.kanmeitu_hqf.MainActivity;
 import com.example.kanmeitu_hqf.R;
 import com.example.kanmeitu_hqf.util.Constants;
 import com.example.kanmeitu_hqf.util.RegexUtil;
-import com.example.kanmeitu_hqf.util.SharedPreferencesUtil;
 
 /**
  * @author hanqf
  */
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
+public class LoginActivity extends BaseActivity implements View.OnClickListener {
 
     private EditText et_username;
     private EditText et_password;
-    private SharedPreferencesUtil sp;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +30,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         et_username = findViewById(R.id.et_username);
         et_password = findViewById(R.id.et_password);
         Button bt_login = findViewById(R.id.bt_login);
-
-        sp = SharedPreferencesUtil.getInstance(getApplicationContext());
 
 
         bt_login.setOnClickListener(this);
